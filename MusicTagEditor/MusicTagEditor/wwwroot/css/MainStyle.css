@@ -1,0 +1,11 @@
+﻿.max_size {
+    position:fixed;
+    width: calc(100% - 100px);
+    height: calc(100% - 100px);
+}
+
+.logo_size
+{
+    width:128px;
+    height:128px;
+}
