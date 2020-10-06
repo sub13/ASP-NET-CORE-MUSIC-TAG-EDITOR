@@ -11,22 +11,22 @@ namespace MusicTagEditor.DataApp.Models
 
         public string Name  { get; set; }
 
-        public Artist artist { get; set; }
+        public List<Artist> Artists { get; set; }
 
         public string Comment { get; set; }
 
-        public string IdCompositor { get; set; }
+        public List<Compositor> Compositors { get; set; }
         public int Disc { get; set; }
 
         public string FrameModel { get; set; }
-        public Genre genre { get; set; }
+        public List<Genre> Genres { get; set; }
 
         public float Length { get; set; }
         public string Lyrics { get; set; }
 
         public byte[] PictureData { get; set; }
 
-        public Album album { get; set; }
+        public Album Album { get; set; }
 
         public int Track { get; set; }
 

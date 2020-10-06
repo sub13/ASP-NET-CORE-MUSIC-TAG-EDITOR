@@ -31,6 +31,7 @@ namespace MusicTagEditor
             //    mvcOtions.EnableEndpointRouting = false;
             //});
             //services.AddMvc();
+            services.AddSignalR();
 
             services.Configure<FormOptions>(
                 options =>
@@ -75,6 +76,7 @@ namespace MusicTagEditor
                 endpoints.MapControllerRoute(
                     name: "others",
                     pattern: "{controller}/{action}/{id?}");
+                endpoints.MapHub<SendTagHub>("/GetTag");
             });
         }
     }

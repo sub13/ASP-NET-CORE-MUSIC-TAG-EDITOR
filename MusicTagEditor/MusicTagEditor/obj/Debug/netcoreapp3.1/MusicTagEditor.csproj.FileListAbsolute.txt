@@ -278,7 +278,6 @@ C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\Music
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\MusicTagEditor.csprojAssemblyReference.cache
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\MusicTagEditor.AssemblyInfoInputs.cache
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\MusicTagEditor.AssemblyInfo.cs
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\MusicTagEditor.csproj.CoreCompileInputs.cache
@@ -304,3 +303,6 @@ C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\Music
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\nu.dll
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\nu.pdb
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\MusicTagEditor.genruntimeconfig.cache
+C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\MusicTagEditor.csprojAssemblyReference.cache
+C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Choosing.cshtml.g.cs
+C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\bin\Debug\netcoreapp3.1\libman.json

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<MusicTagEditor.DataApp.Models.MusicFileModel>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 border">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>*@
+                <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                    <a class="navbar-brand" href="#">
+                        <img src="~/Images/Logo/compact-disc.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                        MusicTagEditor
+                    </a>
+                    <ul class="navbar-nav mr-auto">
+                        <li>
+                            <form method="post">
+                                <button class="btn btn-outline-primary my-2 my-sm-0" asp-action="General" asp-controller="Menu" type="submit">Главная</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mx-auto order-0">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-success">
+                            <img src="~/Icons/play.svg" alt="" width="32" height="32" title="Bootstrap">
+                        </button>
+                        <button name="UniversalBtn" type="button" class="btn btn-outline-success" onclick="SendPathToServer()">
+                            <img src="~/Icons/pencil.svg" alt="" width="32" height="32" title="Bootstrap">
+                        </button>
+                    </div>
+                </div>
+
+                <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                    @*<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">*@
+                    <ul class="navbar-nav ml-auto">
+                        <li>
+                            <a type="button" class="btn-floating deep-purple my-2 my-sm-0" asp-action="Logout" asp-controller="Auth"><i class="glyphicon-class" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#">Справка</a>
+                        </li>
+                        <li>
+                            <form class="form-inline my-2 my-lg-0">
+                                <button class="btn btn-outline-danger my-2 my-sm-0" asp-action="Logout" asp-controller="Auth" type="submit">Выход</button>
+                            </form>
+                        </li>
+                    </ul>
+                    @*</div>*@
+                </div>
+                <button class="navbar-toggler align-self-end" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="container" name="FileContainer">
+    <div class="row justify-content-center" name="ChooseSong">
+        <div class="list-group mt-5" id="list-tab" role="tablist">
+            @{
+                int i = 0;
+                @foreach (var item in Model)
+                {
+                    <p id="@i" name="path" hidden>@item.Path</p>
+                    <a name="songName" class="list-group-item list-group-item-action" id="@i" data-toggle="list" role="tab" aria-controls="home">@item.Name</a>
+                    i++;
+                }
+            }
+        </div>
+    </div>
+    <div class="row justify-content-center" name="EditRow">
+        </div>
+    </div>
+
+
+
+    <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/TagReciver.js"></script>
