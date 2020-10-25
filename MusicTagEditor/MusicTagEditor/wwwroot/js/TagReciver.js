@@ -21,12 +21,17 @@ var DisplayTagData = (data) =>
     ChooseSongRow =  document.querySelector('[name = "ChooseSong"]');
     //fileContainer.parentNode.removeChild(fileContainer);
     console.log(data);
+    let selectedSong = document.querySelector('.active');
+    let nameSong = selectedSong.textContent;
     ChooseSongRow.innerHTML =`
-    <form name="EditForm" method="post" action="/Menu/SaveTag">       
+    <form class="mt-3" asp-anti-forgery="true" name="EditMusicForm" method="post" action="/Menu/SaveTag" enctype="multipart/form-data">       
         <div>
             <div class="form-group">
+                <input type="hidden" name="nameFileSong" value='${nameSong}'>
+            </div>
+            <div class="form-group">
                 <img id="mainSongImage" class="img-fluid" />
-                <input type="file" class="form-control-file" data-show-upload="false" name="uploads">
+                <input type="file" class="form-control-file" data-show-upload="true" name="mainSongImage" accept="image/jpeg,image/png" maxlength="10" >
             </div>
             <div class="form-group">
                 <label  id="exampleInputEmail1" for="Album">Альбом</label>

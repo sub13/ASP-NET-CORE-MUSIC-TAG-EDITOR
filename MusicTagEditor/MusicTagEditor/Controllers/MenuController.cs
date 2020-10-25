@@ -143,6 +143,72 @@ namespace MusicTagEditor.Controllers
             
         }
 
+        //[HtppPost]
+        //public async Task SaveTag(SongViewModel j, IFormFile mainSongImage)
+        //{
+        //    var v = "";
+        //}
+
+        [HttpPost]
+        public IActionResult SaveTag(SongViewModel songTag)
+        {
+            string path = @$"{_appEnvironment.WebRootPath}\\TempFiles\\{User.Identity.Name}\\{songTag.nameFileSong}";
+            TagLib.File musicFile = TagLib.File.Create(path);
+
+            // Запись изменений в файл
+
+            if (songTag.Album == null)
+                songTag.Album = "";
+            musicFile.Tag.Album = songTag.Album;
+            
+            if(songTag.Artists == null)
+                songTag.Artists = "";
+            musicFile.Tag.AlbumArtists = songTag.Artists.Split(",");
+
+            if(songTag.Comment == null)
+                songTag.Comment = "";
+            musicFile.Tag.Comment = songTag.Comment;
+
+            if (songTag.Compositors == null)
+                songTag.Compositors = "";
+            musicFile.Tag.Composers = songTag.Compositors.Split(",");
+
+            musicFile.Tag.Disc = (uint)songTag.Disc;
+
+
+            if (songTag.Genres == null)
+                songTag.Genres = "";
+            musicFile.Tag.Genres = songTag.Genres.Split(",");
+
+            if (songTag.Name == null)
+                songTag.Name = "";
+            musicFile.Tag.Title = songTag.Name;
+
+            musicFile.Tag.Track = (uint)songTag.Track;
+
+            if (songTag.Lyrics == null)
+                songTag.Lyrics = "";
+            musicFile.Tag.Lyrics = songTag.Lyrics;
+
+            if (songTag.mainSongImage != null)
+            {
+                // Запись изображения
+                using (var ms = new MemoryStream())
+                {
+                    songTag.mainSongImage.CopyToAsync(ms);
+                    byte[] mainSongImageBytes = ms.ToArray();
+                    musicFile.Tag.Pictures[0].Data = mainSongImageBytes;
+                }
+            }
+
+            musicFile.Properties.MediaTypes.ToString();
+            musicFile.Save();
+            var fileStream = new FileStream(path, FileMode.Open);
+            int posFormat = songTag.nameFileSong.LastIndexOf(".");
+            string fileExtension = songTag.nameFileSong.Substring(posFormat + 1);
+            return File(fileStream, "text/plain", songTag.nameFileSong);
+        }
+
         public IActionResult _GetEdit(string path)
         {
             List<MusicFileModel> musicFilesModel = GetMusicModels(path);
