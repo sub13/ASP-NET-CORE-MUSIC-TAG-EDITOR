@@ -197,7 +197,19 @@ namespace MusicTagEditor.Controllers
                 {
                     songTag.mainSongImage.CopyToAsync(ms);
                     byte[] mainSongImageBytes = ms.ToArray();
-                    musicFile.Tag.Pictures[0].Data = mainSongImageBytes;
+                    //if (musicFile.Tag.Pictures[0] == null)
+                    //   musicFile.Tag.Pictures[0] = new TagLib.Picture(PictureType.);
+                    //musicFile.Tag.Pictures[0].Data = mainSongImageBytes;
+
+                    musicFile.Tag.Pictures = new TagLib.IPicture[]
+                    {
+                        new TagLib.Picture(new TagLib.ByteVector(mainSongImageBytes))
+                        {
+                            Type = TagLib.PictureType.FrontCover,
+                            Description = "Cover",
+                            MimeType = System.Net.Mime.MediaTypeNames.Image.Jpeg
+                        }
+                     };
                 }
             }
 

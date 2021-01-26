@@ -154,7 +154,6 @@ C:\Users\Sergey\Desktop\Music tag editor\MusicTagEditor\MusicTagEditor\bin\Debug
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\bin\Debug\netcoreapp3.1\web.config
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\bin\Debug\netcoreapp3.1\nu.exe
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\bin\Debug\netcoreapp3.1\nu.deps.json
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\bin\Debug\netcoreapp3.1\nu.runtimeconfig.json
@@ -306,3 +305,4 @@ C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\Music
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\MusicTagEditor.csprojAssemblyReference.cache
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Choosing.cshtml.g.cs
 C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\bin\Debug\netcoreapp3.1\libman.json
+C:\Users\Sergey\Desktop\Git\Music Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\scopedcss\bundle\nu.styles.css
