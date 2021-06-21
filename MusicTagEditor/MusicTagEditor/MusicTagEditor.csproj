@@ -8,15 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200904144550_Initial.cs" />
-    <Compile Remove="Migrations\20200904144550_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20200904145342_Initial.cs" />
-    <Compile Remove="Migrations\20200904145342_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20200904145506_Initial.cs" />
-    <Compile Remove="Migrations\20200904145506_Initial.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
@@ -30,11 +23,15 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
-    <PackageReference Include="taglib-sharp-netstandard2.0" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\TempFiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MusicTagEditor.Businees\MusicTagEditor.Businees.csproj" />
+    <ProjectReference Include="..\MusicTagEditor.Data\MusicTagEditor.Data.csproj" />
   </ItemGroup>
 
 </Project>

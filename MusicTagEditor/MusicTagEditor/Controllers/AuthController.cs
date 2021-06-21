@@ -1,62 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using MusicTagEditor.DataApp.Models;
+using MusicTagEditor.Data.Models;
+using MusicTagEditor.ViewModels.Auth;
+using System.Threading.Tasks;
 
 namespace MusicTagEditor.Controllers
 {
     public class AuthController : Controller
     {
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
 
-        private SongsDbContext db;
-        public AuthController(SongsDbContext context)
+        public AuthController(SongsDbContext context, 
+            UserManager<User> userManager, 
+            SignInManager<User> signInManager)
         {
-            db = context;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Login(string returnUrl = null)
         {
-            return View();
+            return View(new LoginViewModel { ReturnUrl = returnUrl });
         }
 
-        
-        [ValidateAntiForgeryToken]
         [HttpPost]
-        public async Task<IActionResult> Login(LoginModel model)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
-                if (user != null)
+                var result =
+                    await _signInManager.PasswordSignInAsync(model.Email, model.Password, true, false);
+
+                if (result.Succeeded)
                 {
-                    await Authenticate(model.Email); // аутентификация
-
-                    return RedirectToAction("General", "Menu");
+                    if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
+                    {
+                        return Redirect(model.ReturnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("General", "Menu");
+                    }
                 }
-                ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                else
+                {
+                    ModelState.AddModelError("", "Неправильный логин и (или) пароль");
+                }
             }
-            return View();
-        }
-
-
-        private async Task Authenticate(string userName)
-        {
-            // создаем один claim
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, userName)
-            };
-            // создаем объект ClaimsIdentity
-            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-            // установка аутентификационных куки
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+            return View(model);
         }
 
         [HttpGet]
@@ -66,32 +60,34 @@ namespace MusicTagEditor.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
-                if (user == null)
+                User user = new User { Email = model.Email, UserName = model.Email};
+                var result = await _userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
                 {
-                    // добавляем пользователя в бд
-                    db.Users.Add(new User { Email = model.Email, Password = model.Password });
-                    await db.SaveChangesAsync();
-
-                    await Authenticate(model.Email); // аутентификация
-
-                    return RedirectToAction("Login", "Auth");
+                    await _signInManager.SignInAsync(user, false);
+                    return RedirectToAction("General", "Menu");
                 }
                 else
-                    ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
             }
-            return View();
+            return View(model);
         }
 
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Auth");
         }
     }

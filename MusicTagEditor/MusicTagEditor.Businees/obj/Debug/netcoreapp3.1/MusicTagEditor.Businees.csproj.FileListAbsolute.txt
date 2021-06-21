@@ -1,0 +1,12 @@
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Businees\bin\Debug\netcoreapp3.1\MusicTagEditor.Businees.deps.json
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Businees\bin\Debug\netcoreapp3.1\MusicTagEditor.Businees.dll
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Businees\bin\Debug\netcoreapp3.1\MusicTagEditor.Businees.pdb
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Businees\bin\Debug\netcoreapp3.1\MusicTagEditor.Data.dll
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Businees\bin\Debug\netcoreapp3.1\MusicTagEditor.Data.pdb
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Businees\obj\Debug\netcoreapp3.1\MusicTagEditor.Businees.csproj.AssemblyReference.cache
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Businees\obj\Debug\netcoreapp3.1\MusicTagEditor.Businees.AssemblyInfoInputs.cache
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Businees\obj\Debug\netcoreapp3.1\MusicTagEditor.Businees.AssemblyInfo.cs
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Businees\obj\Debug\netcoreapp3.1\MusicTagEditor.Businees.csproj.CoreCompileInputs.cache
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Businees\obj\Debug\netcoreapp3.1\MusicTagEditor.Businees.csproj.CopyComplete
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Businees\obj\Debug\netcoreapp3.1\MusicTagEditor.Businees.dll
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Businees\obj\Debug\netcoreapp3.1\MusicTagEditor.Businees.pdb

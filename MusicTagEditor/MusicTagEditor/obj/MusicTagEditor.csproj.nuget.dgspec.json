@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sergey\\Desktop\\Git\\Music Tag Editor\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\MusicTagEditor.csproj": {}
+    "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\MusicTagEditor.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sergey\\Desktop\\Git\\Music Tag Editor\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\MusicTagEditor.csproj": {
+    "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Businees\\MusicTagEditor.Businees.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sergey\\Desktop\\Git\\Music Tag Editor\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\MusicTagEditor.csproj",
-        "projectName": "nu",
-        "projectPath": "C:\\Users\\Sergey\\Desktop\\Git\\Music Tag Editor\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\MusicTagEditor.csproj",
-        "packagesPath": "C:\\Users\\Sergey\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sergey\\Desktop\\Git\\Music Tag Editor\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\obj\\",
+        "projectUniqueName": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Businees\\MusicTagEditor.Businees.csproj",
+        "projectName": "MusicTagEditor.Businees",
+        "projectPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Businees\\MusicTagEditor.Businees.csproj",
+        "packagesPath": "C:\\Users\\Siarhei.Shapiatukha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Businees\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Sergey\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Siarhei.Shapiatukha\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,88 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://packagesource": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\MusicTagEditor.Data.csproj": {
+                "projectPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\MusicTagEditor.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.Extensions.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "taglib-sharp-netstandard2.0": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\MusicTagEditor.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\MusicTagEditor.Data.csproj",
+        "projectName": "MusicTagEditor.Data",
+        "projectPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\MusicTagEditor.Data.csproj",
+        "packagesPath": "C:\\Users\\Siarhei.Shapiatukha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Siarhei.Shapiatukha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://packagesource": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
@@ -40,6 +121,82 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\MusicTagEditor.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\MusicTagEditor.csproj",
+        "projectName": "nu",
+        "projectPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\MusicTagEditor.csproj",
+        "packagesPath": "C:\\Users\\Siarhei.Shapiatukha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Siarhei.Shapiatukha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://packagesource": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Businees\\MusicTagEditor.Businees.csproj": {
+                "projectPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Businees\\MusicTagEditor.Businees.csproj"
+              },
+              "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\MusicTagEditor.Data.csproj": {
+                "projectPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\MusicTagEditor.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
             "Microsoft.AspNetCore.Mvc.Core": {
               "target": "Package",
               "version": "[2.2.5, )"
@@ -71,10 +228,6 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.4, )"
-            },
-            "taglib-sharp-netstandard2.0": {
-              "target": "Package",
-              "version": "[2.1.0, )"
             }
           },
           "imports": [
@@ -95,7 +248,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

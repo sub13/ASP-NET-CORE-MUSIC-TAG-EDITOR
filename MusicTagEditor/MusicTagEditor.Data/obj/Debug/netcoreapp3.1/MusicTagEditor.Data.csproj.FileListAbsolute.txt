@@ -1,0 +1,8 @@
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Data\bin\Debug\netcoreapp3.1\MusicTagEditor.Data.deps.json
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Data\bin\Debug\netcoreapp3.1\MusicTagEditor.Data.dll
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Data\bin\Debug\netcoreapp3.1\MusicTagEditor.Data.pdb
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Data\obj\Debug\netcoreapp3.1\MusicTagEditor.Data.AssemblyInfoInputs.cache
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Data\obj\Debug\netcoreapp3.1\MusicTagEditor.Data.AssemblyInfo.cs
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Data\obj\Debug\netcoreapp3.1\MusicTagEditor.Data.csproj.CoreCompileInputs.cache
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Data\obj\Debug\netcoreapp3.1\MusicTagEditor.Data.dll
+C:\Users\Siarhei.Shapiatukha\Desktop\My Git\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor.Data\obj\Debug\netcoreapp3.1\MusicTagEditor.Data.pdb

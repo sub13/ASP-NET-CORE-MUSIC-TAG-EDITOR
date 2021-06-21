@@ -1,30 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using MusicTagEditor.DataApp.Models;
-using TagLib;
+using MusicTagEditor.Businees.Models;
+using MusicTagEditor.Businees.Servicess;
+using MusicTagEditor.Data.Models;
+using MusicTagEditor.ViewModels.Menu;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MusicTagEditor.Controllers
 {
+    [Authorize]
     public class MenuController : Controller
     {
         private SongsDbContext db;
-        private IWebHostEnvironment _appEnvironment;
-        private IHubContext<SendTagHub> _hubContext;
-        public MenuController(SongsDbContext context, IWebHostEnvironment appEnvironment, IHubContext<SendTagHub> hubContext)
+        private readonly IWebHostEnvironment _appEnvironment;
+        private readonly IHubContext<SendTagHub> _hubContext;
+        private readonly IMusicFileService _musicFileService;
+        private readonly IMapper _mapper;
+
+        public MenuController(SongsDbContext context, 
+            IWebHostEnvironment appEnvironment, 
+            IHubContext<SendTagHub> hubContext, 
+            IMusicFileService musicFileService,
+            IMapper mapper)
         {
             db = context;
             _appEnvironment = appEnvironment;
             _hubContext = hubContext;
+            _musicFileService = musicFileService;
+            _mapper = mapper;
         }
+
         public IActionResult General()
         {
             return View();
@@ -55,7 +67,6 @@ namespace MusicTagEditor.Controllers
             return View("General");       
         }
 
-
         private List<MusicFileModel> GetMusicModels(string path)
         {
             
@@ -84,49 +95,9 @@ namespace MusicTagEditor.Controllers
         [HttpPost]
         public async Task GetTagFromMusic(string name, string connectionId)
         {
-            string path = @$"{_appEnvironment.WebRootPath}\\TempFiles\\{User.Identity.Name}\\{name}";
-            TagLib.File musicFile = TagLib.File.Create(path);
+            var songData = await _musicFileService.GetMusicFileData(name);
 
-            Song s = new Song()
-            {
-                Album = new Album() { Name = musicFile.Tag.Album, Year = (int)musicFile.Tag.Year },
-                Name = musicFile.Tag.Title,
-                Disc = (int)musicFile.Tag.Disc,
-                Comment = musicFile.Tag.Comment,
-                Track = (int)musicFile.Tag.Track,
-                Lyrics = musicFile.Tag.Lyrics,
-                //PictureData = musicFile.Tag.Pictures[0].Data.Data
-            };
-
-            // Добавление жанров
-            List<Genre> genres = new List<Genre>();
-            foreach (string genre in musicFile.Tag.Genres)
-            {
-                genres.Add(new Genre() { Name = genre });  
-            }
-            s.Genres = genres;
-
-            // Добавление Артистов
-            List<Artist> artists = new List<Artist>();
-            foreach (string artist in musicFile.Tag.AlbumArtists)
-            {
-                artists.Add(new Artist() { Name = artist });
-            }
-            s.Artists = artists;
-
-            // Добавление Композиторов
-            List<Compositor> compositors = new List<Compositor>();
-            foreach (string compositor in musicFile.Tag.Composers)
-            {
-                compositors.Add(new Compositor() { Name = compositor });
-            }
-            s.Compositors = compositors;
-            if(musicFile.Tag.Pictures.Length != 0)
-                s.PictureData = musicFile.Tag.Pictures[0].Data.Data;
-            //MemoryStream ms = new MemoryStream(musicFile.Tag.Pictures[0].Data.Data);
-            Picture pic = new Picture();
-
-            await _hubContext.Clients.Client(connectionId).SendAsync("GetTagForm", s);
+            await _hubContext.Clients.Client(connectionId).SendAsync("GetTagForm", songData);
             //    TagLib.File musicFile = TagLib.File.Create(path);
             //    Song s = new Song()
             //    {
@@ -143,81 +114,13 @@ namespace MusicTagEditor.Controllers
             
         }
 
-        //[HtppPost]
-        //public async Task SaveTag(SongViewModel j, IFormFile mainSongImage)
-        //{
-        //    var v = "";
-        //}
-
         [HttpPost]
-        public IActionResult SaveTag(SongViewModel songTag)
+        public async Task<IActionResult> SaveTag(SongViewModel songTag)
         {
-            string path = @$"{_appEnvironment.WebRootPath}\\TempFiles\\{User.Identity.Name}\\{songTag.nameFileSong}";
-            TagLib.File musicFile = TagLib.File.Create(path);
-
-            // Запись изменений в файл
-
-            if (songTag.Album == null)
-                songTag.Album = "";
-            musicFile.Tag.Album = songTag.Album;
+            var songData = _mapper.Map<SongData>(songTag);
             
-            if(songTag.Artists == null)
-                songTag.Artists = "";
-            musicFile.Tag.AlbumArtists = songTag.Artists.Split(",");
+            var fileStream = await _musicFileService.UpdateMusicFile(songData);
 
-            if(songTag.Comment == null)
-                songTag.Comment = "";
-            musicFile.Tag.Comment = songTag.Comment;
-
-            if (songTag.Compositors == null)
-                songTag.Compositors = "";
-            musicFile.Tag.Composers = songTag.Compositors.Split(",");
-
-            musicFile.Tag.Disc = (uint)songTag.Disc;
-
-
-            if (songTag.Genres == null)
-                songTag.Genres = "";
-            musicFile.Tag.Genres = songTag.Genres.Split(",");
-
-            if (songTag.Name == null)
-                songTag.Name = "";
-            musicFile.Tag.Title = songTag.Name;
-
-            musicFile.Tag.Track = (uint)songTag.Track;
-
-            if (songTag.Lyrics == null)
-                songTag.Lyrics = "";
-            musicFile.Tag.Lyrics = songTag.Lyrics;
-
-            if (songTag.mainSongImage != null)
-            {
-                // Запись изображения
-                using (var ms = new MemoryStream())
-                {
-                    songTag.mainSongImage.CopyToAsync(ms);
-                    byte[] mainSongImageBytes = ms.ToArray();
-                    //if (musicFile.Tag.Pictures[0] == null)
-                    //   musicFile.Tag.Pictures[0] = new TagLib.Picture(PictureType.);
-                    //musicFile.Tag.Pictures[0].Data = mainSongImageBytes;
-
-                    musicFile.Tag.Pictures = new TagLib.IPicture[]
-                    {
-                        new TagLib.Picture(new TagLib.ByteVector(mainSongImageBytes))
-                        {
-                            Type = TagLib.PictureType.FrontCover,
-                            Description = "Cover",
-                            MimeType = System.Net.Mime.MediaTypeNames.Image.Jpeg
-                        }
-                     };
-                }
-            }
-
-            musicFile.Properties.MediaTypes.ToString();
-            musicFile.Save();
-            var fileStream = new FileStream(path, FileMode.Open);
-            int posFormat = songTag.nameFileSong.LastIndexOf(".");
-            string fileExtension = songTag.nameFileSong.Substring(posFormat + 1);
             return File(fileStream, "text/plain", songTag.nameFileSong);
         }
 
@@ -226,7 +129,5 @@ namespace MusicTagEditor.Controllers
             List<MusicFileModel> musicFilesModel = GetMusicModels(path);
             return PartialView("_Edit");
         }
-
-
     }
 }

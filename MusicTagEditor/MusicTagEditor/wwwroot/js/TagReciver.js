@@ -1,4 +1,4 @@
-﻿
+
  var fileContainerCopy = document.querySelector('[name = "FileContainer"]').cloneNode(true);
  var ChooseSongRow;
  var hubConnection = new signalR.HubConnectionBuilder()

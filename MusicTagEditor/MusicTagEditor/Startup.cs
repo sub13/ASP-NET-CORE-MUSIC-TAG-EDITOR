@@ -1,17 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Configuration;
-using MusicTagEditor.DataApp.Models;
-using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using MusicTagEditor.Businees.Servicess;
+using MusicTagEditor.Data.Models;
+using MusicTagEditor.Mappings;
 
 namespace MusicTagEditor
 {
@@ -26,11 +24,6 @@ namespace MusicTagEditor
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddControllersWithViews(mvcOtions =>
-            //{
-            //    mvcOtions.EnableEndpointRouting = false;
-            //});
-            //services.AddMvc();
             services.AddSignalR();
 
             services.Configure<FormOptions>(
@@ -43,12 +36,35 @@ namespace MusicTagEditor
 
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<SongsDbContext>(options => options.UseSqlServer(connection));
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options => //CookieAuthenticationOptions
+
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<SongsDbContext>();
+
+            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            //    .AddCookie(options => //CookieAuthenticationOptions
+            //    {
+            //        options.LoginPath = new PathString("/Auth/Login");
+            //    });
+
+            services.PostConfigure<CookieAuthenticationOptions>(IdentityConstants.ApplicationScheme,
+                opt =>
                 {
-                    options.LoginPath = new PathString("/Auth/Login");
+                    opt.LoginPath = new PathString("/Auth/Login");
                 });
+
             services.AddControllersWithViews();
+
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new SongDataProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IMusicFileService, MusicFileService>();
+
         }
         public void Configure(IApplicationBuilder app)
         {
@@ -58,16 +74,6 @@ namespace MusicTagEditor
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapRoute(
-            //        name: "default",
-            //        template: "{controller=Menu}/{action=General}/{id?}");
-
-            //    routes.MapRoute(
-            //        name: "others",
-            //        template: "{controller}/{action}/{id?}");
-            //});
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
