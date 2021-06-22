@@ -4,7 +4,6 @@ using MusicTagEditor.Businees.Models;
 using MusicTagEditor.Data.Models;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MusicTagEditor.Businees.Servicess
@@ -22,26 +21,22 @@ namespace MusicTagEditor.Businees.Servicess
 
         public async Task<string> UploadMusicFiles(IFormFileCollection uploads)
         {
-            StringBuilder _pathToUserCurrentDir;
-            var currentUser = await _userService.GetCurrentUser();
-
             if (uploads != null)
             {
-                string pathDirTemp = @$"{_appEnvironment.WebRootPath}\\TempFiles";
-                DirectoryInfo dirTemp = new DirectoryInfo(pathDirTemp);
-                DirectoryInfo _userDir = dirTemp.CreateSubdirectory(currentUser.Email);
-                _pathToUserCurrentDir = new StringBuilder($@"{pathDirTemp}\\{currentUser.Email}\\");
+
+                var pathToUserCurrentDir = await GetUserPathDirectory();
 
                 foreach (var musicFile in uploads)
                 {
-                    string pathToMusicFile = $@"{_pathToUserCurrentDir}\{musicFile.FileName}";
+                    string pathToMusicFile = $@"{pathToUserCurrentDir}\{musicFile.FileName}";
+
                     using (var fileStream = new FileStream(pathToMusicFile, FileMode.Create))
                     {
                         await Task.Run(() => musicFile.CopyToAsync(fileStream));
                     }
                 }
 
-                return _pathToUserCurrentDir.ToString();
+                return pathToUserCurrentDir.ToString();
             }
 
             return null;
@@ -117,6 +112,42 @@ namespace MusicTagEditor.Businees.Servicess
             musicFile.Properties.MediaTypes.ToString();
             musicFile.Save();
             return new FileStream(path, FileMode.Open);
+        }
+
+        public async Task<string> GetUserPathDirectory()
+        {
+            var currentUser = await _userService.GetCurrentUser();
+
+            string pathDirTemp = @$"{_appEnvironment.WebRootPath}\\TempFiles";
+
+            var dirTemp = new DirectoryInfo(pathDirTemp);
+
+            string pathToUserCurrentDir = $@"{pathDirTemp}\\{currentUser.Email}\\";
+            var targetDirectory = new DirectoryInfo(pathToUserCurrentDir);
+
+            if(!targetDirectory.Exists)
+                dirTemp.CreateSubdirectory(currentUser.Email);
+
+            return pathToUserCurrentDir;
+        }
+
+        public async Task<List<MusicFileModel>> GetMusicModels()
+        {
+            var pathToUserCurrentDir = await GetUserPathDirectory();
+            DirectoryInfo userDir = new DirectoryInfo(pathToUserCurrentDir);
+            List<MusicFileModel> musicFilesModel = new List<MusicFileModel>();
+            FileInfo[] musicFiles = userDir.GetFiles();
+
+            foreach (var mFile in musicFiles)
+            {
+                MusicFileModel m = new MusicFileModel()
+                {
+                    Name = mFile.Name,
+                    Path = mFile.FullName
+                };
+                musicFilesModel.Add(m);
+            }
+            return musicFilesModel;
         }
 
         public async Task<Song> GetMusicFileData(string name)

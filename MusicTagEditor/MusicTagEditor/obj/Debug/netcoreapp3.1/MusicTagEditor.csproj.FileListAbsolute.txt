@@ -638,3 +638,4 @@ C:\Users\Siarhei.Shapiatukha\Desktop\Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\Mu
 C:\Users\Siarhei.Shapiatukha\Desktop\Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\nu.dll
 C:\Users\Siarhei.Shapiatukha\Desktop\Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\nu.pdb
 C:\Users\Siarhei.Shapiatukha\Desktop\Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\MusicTagEditor.genruntimeconfig.cache
+C:\Users\Siarhei.Shapiatukha\Desktop\Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Shared\_LayoutPlayer.cshtml.g.cs

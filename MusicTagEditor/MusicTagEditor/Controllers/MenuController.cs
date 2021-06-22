@@ -9,8 +9,6 @@ using MusicTagEditor.Businees.Servicess;
 using MusicTagEditor.Data.Models;
 using MusicTagEditor.ViewModels.Menu;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MusicTagEditor.Controllers
@@ -49,36 +47,19 @@ namespace MusicTagEditor.Controllers
 
             var pathToFiles = await _musicFileService.UploadMusicFiles(uploads);
 
+
             if (pathToFiles != null)
             {
-                return RedirectToAction("Choosing", "Menu", new { path = pathToFiles });
+                return RedirectToAction("Choosing", "Menu");
             }
 
             return View("General");       
         }
 
-        private List<MusicFileModel> GetMusicModels(string path)
+        
+        public async Task<IActionResult> Choosing()
         {
-            
-            DirectoryInfo userDir = new DirectoryInfo(path);
-            List<MusicFileModel> musicFilesModel = new List<MusicFileModel>();
-            FileInfo[] musicFiles = userDir.GetFiles();
-
-            foreach (var mFile in musicFiles)
-            {
-                MusicFileModel m = new MusicFileModel()
-                {
-                    Name = mFile.Name,
-                    Path = mFile.FullName
-                };
-                musicFilesModel.Add(m);
-            }
-            return musicFilesModel;
-        }
-
-        public IActionResult Choosing(string path)
-        {
-            List<MusicFileModel> musicFilesModel = GetMusicModels(path);     
+            List<MusicFileModel> musicFilesModel = await _musicFileService.GetMusicModels();     
             return View(musicFilesModel);
         }
 
@@ -86,9 +67,7 @@ namespace MusicTagEditor.Controllers
         public async Task GetTagFromMusic(string name, string connectionId)
         {
             var songData = await _musicFileService.GetMusicFileData(name);
-
             await _hubContext.Clients.Client(connectionId).SendAsync("GetTagForm", songData);
-            
         }
 
         [HttpPost]
@@ -101,9 +80,9 @@ namespace MusicTagEditor.Controllers
             return File(fileStream, "text/plain", songTag.nameFileSong);
         }
 
-        public IActionResult _GetEdit(string path)
+        public async Task<IActionResult> _GetEdit(string path)
         {
-            List<MusicFileModel> musicFilesModel = GetMusicModels(path);
+            List<MusicFileModel> musicFilesModel = await _musicFileService.GetMusicModels();
             return PartialView("_Edit");
         }
     }

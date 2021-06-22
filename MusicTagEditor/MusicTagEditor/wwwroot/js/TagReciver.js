@@ -175,9 +175,10 @@ function addOptionToSelect(data, selector)
 
 function SendPathToServer()
 {
-    
     const data = new FormData();
     const currentElem = document.querySelector('.active');
+    
+    if(isEmptyObject(currentElem)) return;
     /*
     const selector = `p[name='path'][id='${idCurrent}']`;
     const pWithPath =  document.querySelector(selector);
@@ -193,6 +194,22 @@ function SendPathToServer()
     })
     .catch(error => console.error("Error: ", error));
     //hubConnection.invoke("GetTagFromMusic", path);
+}
+
+function isEmptyObject(obj) {
+    if(obj == null)
+    {    
+        return true
+    }
+    else
+    {
+        for (var i in obj) {
+            if (obj.hasOwnProperty(i)) {
+                return false;
+        }
+    }
+        return true;
+    }
 }
 
 function BackToList()

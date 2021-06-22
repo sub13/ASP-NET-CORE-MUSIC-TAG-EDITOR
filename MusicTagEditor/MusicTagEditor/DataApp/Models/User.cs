@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-
-namespace MusicTagEditor.DataApp.Models
+﻿namespace MusicTagEditor.DataApp.Models
 {
     public class User
     {
