@@ -27,5 +27,7 @@ namespace MusicTagEditor.Businees.Models
 
         public int Track { get; set; }
         public string nameFileSong { get; set; }
+
+        public string Year { get; set; }
     }
 }

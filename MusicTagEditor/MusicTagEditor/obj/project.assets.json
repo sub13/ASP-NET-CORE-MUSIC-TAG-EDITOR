@@ -10003,11 +10003,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\MusicTagEditor.csproj",
+      "projectUniqueName": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\Tag Editor\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\MusicTagEditor.csproj",
       "projectName": "nu",
-      "projectPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\MusicTagEditor.csproj",
+      "projectPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\Tag Editor\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\MusicTagEditor.csproj",
       "packagesPath": "C:\\Users\\Siarhei.Shapiatukha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\obj\\",
+      "outputPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\Tag Editor\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Siarhei.Shapiatukha\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -10025,11 +10025,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Businees\\MusicTagEditor.Businees.csproj": {
-              "projectPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Businees\\MusicTagEditor.Businees.csproj"
+            "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\Tag Editor\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Businees\\MusicTagEditor.Businees.csproj": {
+              "projectPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\Tag Editor\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Businees\\MusicTagEditor.Businees.csproj"
             },
-            "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\MusicTagEditor.Data.csproj": {
-              "projectPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\MusicTagEditor.Data.csproj"
+            "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\Tag Editor\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\MusicTagEditor.Data.csproj": {
+              "projectPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\Tag Editor\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\MusicTagEditor.Data.csproj"
             }
           }
         }

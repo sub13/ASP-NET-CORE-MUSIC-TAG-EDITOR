@@ -817,11 +817,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\MusicTagEditor.Data.csproj",
+      "projectUniqueName": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\Tag Editor\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\MusicTagEditor.Data.csproj",
       "projectName": "MusicTagEditor.Data",
-      "projectPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\MusicTagEditor.Data.csproj",
+      "projectPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\Tag Editor\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\MusicTagEditor.Data.csproj",
       "packagesPath": "C:\\Users\\Siarhei.Shapiatukha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\obj\\",
+      "outputPath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\Tag Editor\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Siarhei.Shapiatukha\\AppData\\Roaming\\NuGet\\NuGet.Config",

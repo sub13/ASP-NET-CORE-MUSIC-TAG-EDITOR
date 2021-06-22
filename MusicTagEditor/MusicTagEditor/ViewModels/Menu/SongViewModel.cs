@@ -27,5 +27,7 @@ namespace MusicTagEditor.ViewModels.Menu
 
         public int Track { get; set; }
         public string nameFileSong { get; set; }
+
+        public string Year { get; set; }
     }
 }

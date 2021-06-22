@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "y+ziT+xC1FjX1drLjzjm5QPnijmrYrTTEZ3PI4C5jgTbEdfPyYLetCjtrr+tqhCuV22ZP/k1F7yd8N++2JJf9A==",
+  "dgSpecHash": "TfiO/mPJuFaXIg5OU56O1pa1oXZwc10q7coHtWSpodbzZK/GxVgMcLdYI3xfaUmc4Jo/U50eoAlxyQeP0Pgbtg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Businees\\MusicTagEditor.Businees.csproj",
+  "projectFilePath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\Tag Editor\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor.Businees\\MusicTagEditor.Businees.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Siarhei.Shapiatukha\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.7\\microsoft.aspnetcore.cryptography.internal.3.1.7.nupkg.sha512",
     "C:\\Users\\Siarhei.Shapiatukha\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.7\\microsoft.aspnetcore.cryptography.keyderivation.3.1.7.nupkg.sha512",

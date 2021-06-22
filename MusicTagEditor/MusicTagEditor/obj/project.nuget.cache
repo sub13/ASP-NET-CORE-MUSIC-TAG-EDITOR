@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6c9RwZxmTYgDFz3bpphL2D4DONCyOAxbpbOQ+2imb5bx2Tffr4ldHJ0HLw0ZbSy2bi5fWXciBRQMJ9d/Kqkh3Q==",
+  "dgSpecHash": "JlVmVtUpT+X1R0smpiEZycOEVJlgiy7pe3bz+HERUzWU35eTryN6nzWfpXpXNbJw6C3herolwZebrFeRTvSFQw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\My Git\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\MusicTagEditor.csproj",
+  "projectFilePath": "C:\\Users\\Siarhei.Shapiatukha\\Desktop\\Tag Editor\\ASP-NET-CORE-MUSIC-TAG-EDITOR\\MusicTagEditor\\MusicTagEditor\\MusicTagEditor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Siarhei.Shapiatukha\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Siarhei.Shapiatukha\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

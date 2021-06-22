@@ -20,7 +20,7 @@ namespace MusicTagEditor.Businees.Servicess
             _userService = userService;
         }
 
-        public async Task<bool> UploadMusicFiles(IFormFileCollection uploads)
+        public async Task<string> UploadMusicFiles(IFormFileCollection uploads)
         {
             StringBuilder _pathToUserCurrentDir;
             var currentUser = await _userService.GetCurrentUser();
@@ -41,60 +41,62 @@ namespace MusicTagEditor.Businees.Servicess
                     }
                 }
 
-                return true;
+                return _pathToUserCurrentDir.ToString();
             }
 
-            return false;
+            return null;
         }
 
-        public async Task<FileStream> UpdateMusicFile(SongData songViewModel)
+        public async Task<FileStream> UpdateMusicFile(SongData songData)
         {
             var currentUser = await _userService.GetCurrentUser();
 
-            string path = @$"{_appEnvironment.WebRootPath}\\TempFiles\\{currentUser.Email}\\{songViewModel.nameFileSong}";
+            string path = @$"{_appEnvironment.WebRootPath}\\TempFiles\\{currentUser.Email}\\{songData.nameFileSong}";
             TagLib.File musicFile = TagLib.File.Create(path);
 
             // Запись изменений в файл
 
-            if (songViewModel.Album == null)
-                songViewModel.Album = "";
-            musicFile.Tag.Album = songViewModel.Album;
+            if (songData.Album == null)
+                songData.Album = "";
+            musicFile.Tag.Album = songData.Album;
 
-            if (songViewModel.Artists == null)
-                songViewModel.Artists = "";
-            musicFile.Tag.AlbumArtists = songViewModel.Artists.Split(",");
+            if (songData.Artists == null)
+                songData.Artists = "";
+            musicFile.Tag.AlbumArtists = songData.Artists.Split(",");
 
-            if (songViewModel.Comment == null)
-                songViewModel.Comment = "";
-            musicFile.Tag.Comment = songViewModel.Comment;
+            if (songData.Comment == null)
+                songData.Comment = "";
+            musicFile.Tag.Comment = songData.Comment;
 
-            if (songViewModel.Compositors == null)
-                songViewModel.Compositors = "";
-            musicFile.Tag.Composers = songViewModel.Compositors.Split(",");
+            if (songData.Compositors == null)
+                songData.Compositors = "";
+            musicFile.Tag.Composers = songData.Compositors.Split(",");
 
-            musicFile.Tag.Disc = (uint)songViewModel.Disc;
+            musicFile.Tag.Disc = (uint)songData.Disc;
 
 
-            if (songViewModel.Genres == null)
-                songViewModel.Genres = "";
-            musicFile.Tag.Genres = songViewModel.Genres.Split(",");
+            if (songData.Genres == null)
+                songData.Genres = "";
+            musicFile.Tag.Genres = songData.Genres.Split(",");
 
-            if (songViewModel.Name == null)
-                songViewModel.Name = "";
-            musicFile.Tag.Title = songViewModel.Name;
+            if (songData.Name == null)
+                songData.Name = "";
+            musicFile.Tag.Title = songData.Name;
 
-            musicFile.Tag.Track = (uint)songViewModel.Track;
+            musicFile.Tag.Track = (uint)songData.Track;
 
-            if (songViewModel.Lyrics == null)
-                songViewModel.Lyrics = "";
-            musicFile.Tag.Lyrics = songViewModel.Lyrics;
+            if (songData.Lyrics == null)
+                songData.Lyrics = "";
+            musicFile.Tag.Lyrics = songData.Lyrics;
 
-            if (songViewModel.mainSongImage != null)
+            musicFile.Tag.Year = uint.Parse(songData.Year);
+
+            if (songData.mainSongImage != null)
             {
                 // Запись изображения
                 using (var ms = new MemoryStream())
                 {
-                    await songViewModel.mainSongImage.CopyToAsync(ms);
+                    await songData.mainSongImage.CopyToAsync(ms);
                     byte[] mainSongImageBytes = ms.ToArray();
                     //if (musicFile.Tag.Pictures[0] == null)
                     //   musicFile.Tag.Pictures[0] = new TagLib.Picture(PictureType.);

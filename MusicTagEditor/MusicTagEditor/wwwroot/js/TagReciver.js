@@ -197,7 +197,7 @@ function SendPathToServer()
 
 function BackToList()
 {
-    let EditForm =  document.querySelector('[name = "EditForm"]');
+    let EditForm = document.querySelector('[name = "EditMusicForm"]');
     EditForm.parentNode.removeChild(EditForm);
     ChooseSongRow.appendChild(fileContainerCopy);
     let UniversalBtn =  document.querySelector('[name = "UniversalBtn"]');

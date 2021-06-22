@@ -8,7 +8,7 @@ namespace MusicTagEditor.Businees.Servicess
 {
     public interface IMusicFileService
     {
-        Task<bool> UploadMusicFiles(IFormFileCollection uploads);
+        Task<string> UploadMusicFiles(IFormFileCollection uploads);
 
         Task<FileStream> UpdateMusicFile(SongData songViewModel);
 

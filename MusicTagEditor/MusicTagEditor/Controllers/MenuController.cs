@@ -46,22 +46,12 @@ namespace MusicTagEditor.Controllers
         [RequestSizeLimit(1000000000)] // 1gb
         public async Task<IActionResult> UploadMusicFiles(IFormFileCollection uploads)
         {
-            StringBuilder _pathToUserCurrentDir;
-            if (uploads != null)
+
+            var pathToFiles = await _musicFileService.UploadMusicFiles(uploads);
+
+            if (pathToFiles != null)
             {
-                string pathDirTemp = @$"{_appEnvironment.WebRootPath}\\TempFiles";
-                DirectoryInfo dirTemp = new DirectoryInfo(pathDirTemp);
-                DirectoryInfo _userDir = dirTemp.CreateSubdirectory(User.Identity.Name);
-                _pathToUserCurrentDir = new StringBuilder($@"{pathDirTemp}\\{User.Identity.Name}\\");
-                foreach (var musicFile in uploads)
-                {
-                    string pathToMusicFile = $@"{_pathToUserCurrentDir}\{musicFile.FileName}";
-                    using (var fileStream = new FileStream(pathToMusicFile, FileMode.Create))
-                    {
-                        await Task.Run(() => musicFile.CopyToAsync(fileStream));
-                    }
-                }
-                return RedirectToAction("Choosing", "Menu", new { path = _pathToUserCurrentDir.ToString() });
+                return RedirectToAction("Choosing", "Menu", new { path = pathToFiles });
             }
 
             return View("General");       
@@ -98,19 +88,6 @@ namespace MusicTagEditor.Controllers
             var songData = await _musicFileService.GetMusicFileData(name);
 
             await _hubContext.Clients.Client(connectionId).SendAsync("GetTagForm", songData);
-            //    TagLib.File musicFile = TagLib.File.Create(path);
-            //    Song s = new Song()
-            //    {
-            //        album = new Album() { Name = musicFile.Tag.Album, Year = (int)musicFile.Tag.Year },
-            //        Name = musicFile.Tag.Title,
-            //        Disc = (int)musicFile.Tag.Disc,
-            //        Comment = musicFile.Tag.Comment,
-            //        Track = (int)musicFile.Tag.Track,
-            //        genre = new Genre() { Name = musicFile.Tag.FirstGenre },
-            //        Lyrics = musicFile.Tag.Lyrics
-            //    };
-            //    db.Songs.Add(s);
-            //}
             
         }
 
