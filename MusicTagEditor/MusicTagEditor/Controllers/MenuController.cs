@@ -85,5 +85,12 @@ namespace MusicTagEditor.Controllers
             List<MusicFileModel> musicFilesModel = await _musicFileService.GetMusicModels();
             return PartialView("_Edit");
         }
+
+        [HttpPost]
+        public async Task<FileStreamResult> GetSongByName(string name)
+        {
+            var musicFileStream = await _musicFileService.GetSongByName(name);
+            return File(musicFileStream, "text/plain", name);
+        }
     }
 }

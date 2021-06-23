@@ -18,5 +18,9 @@ namespace MusicTagEditor.Businees.Servicess
         Task<string> GetUserPathDirectory();
 
         Task<List<MusicFileModel>> GetMusicModels();
+
+        Task<string> GetPathToSong(string name);
+
+        Task<FileStream> GetSongByName(string name);
     }
 }

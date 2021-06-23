@@ -44,9 +44,7 @@ namespace MusicTagEditor.Businees.Servicess
 
         public async Task<FileStream> UpdateMusicFile(SongData songData)
         {
-            var currentUser = await _userService.GetCurrentUser();
-
-            string path = @$"{_appEnvironment.WebRootPath}\\TempFiles\\{currentUser.Email}\\{songData.nameFileSong}";
+            var path = await GetPathToSong(songData.nameFileSong);
             TagLib.File musicFile = TagLib.File.Create(path);
 
             // Запись изменений в файл
@@ -111,7 +109,8 @@ namespace MusicTagEditor.Businees.Servicess
 
             musicFile.Properties.MediaTypes.ToString();
             musicFile.Save();
-            return new FileStream(path, FileMode.Open);
+
+            return await GetSongByName(songData.nameFileSong);
         }
 
         public async Task<string> GetUserPathDirectory()
@@ -131,6 +130,12 @@ namespace MusicTagEditor.Businees.Servicess
             return pathToUserCurrentDir;
         }
 
+        public async Task<string> GetPathToSong(string name)
+        {
+            var currentUser = await _userService.GetCurrentUser();
+            return @$"{_appEnvironment.WebRootPath}\\TempFiles\\{currentUser.Email}\\{name}";
+        }
+
         public async Task<List<MusicFileModel>> GetMusicModels()
         {
             var pathToUserCurrentDir = await GetUserPathDirectory();
@@ -148,6 +153,12 @@ namespace MusicTagEditor.Businees.Servicess
                 musicFilesModel.Add(m);
             }
             return musicFilesModel;
+        }
+
+        public async Task<FileStream> GetSongByName(string name)
+        {
+            var path = await GetPathToSong(name);
+            return new FileStream(path, FileMode.Open);
         }
 
         public async Task<Song> GetMusicFileData(string name)

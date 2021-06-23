@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\js\player\" />
     <Folder Include="wwwroot\TempFiles\" />
   </ItemGroup>
 

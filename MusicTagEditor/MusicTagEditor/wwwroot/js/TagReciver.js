@@ -63,15 +63,15 @@ var DisplayTagData = (data) =>
             </div>
             <div class="form-group">
                 <label  id="exampleInputEmail1" for="Artists">Исполнители</label>
-                <input class="form-control" type="text" id="Artists" required pattern="^$|^[a-zA-Z0-9а-яА-Я \-]*([,]?[a-zA-Z0-9а-яА-Я \-]+)*$" name="Artists" value="">
+                <input class="form-control" type="text" id="Artists"  name="Artists" value="">
             </div>
             <div class="form-group">
                 <label  id="exampleInputEmail1" for="Genres">Жанры</label>
-                <input class="form-control" type="text" id="Genres" name="Genres" required pattern="^$|^[a-zA-Z0-9а-яА-Я \-]*([,]?[a-zA-Z0-9а-яА-Я \-]+)*$" value="">
+                <input class="form-control" type="text" id="Genres" name="Genres" value="">
             </div>
             <div class="form-group">
                 <label  id="exampleInputEmail1" for="Compositors">Композиторы</label>
-                <input class="form-control" type="text" id="Compositors" required pattern="^$|^[a-zA-Z0-9а-яА-Я \-]*([,]?[a-zA-Z0-9а-яА-Я \-]+)*$" name="Compositors" value="">
+                <input class="form-control" type="text" id="Compositors"  name="Compositors" value="">
             </div>
             <div class="form-group">
                 <input type="submit" value="Сохранить" class="btn btn-primary">
@@ -128,7 +128,7 @@ var DisplayTagData = (data) =>
     UniversalBtn.onclick = BackToList;
 
     //Установка изображения
-    setImageFromBase64(data.pictureData,'#mainSongImage','300','300');    
+    setImageFromBase64(data.pictureData,'#mainSongImage','500','500');    
 };
 
 
