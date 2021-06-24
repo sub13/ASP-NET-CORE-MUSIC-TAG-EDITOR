@@ -1,0 +1,17 @@
+input[type=range][id=volumeSlider]::-webkit-slider-thumb {
+    background: green;
+}
+input[type=range][id=volumeSlider]::-moz-range-thumb {
+    background: green;
+}
+input[type=range][id=volumeSlider]::-ms-thumb {
+    background: green;
+}
+
+.playerBtns
+{
+    min-width:50px; 
+    max-width:50px; 
+    min-height:50px; 
+    max-height:50px;
+}

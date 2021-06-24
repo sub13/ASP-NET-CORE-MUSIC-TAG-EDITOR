@@ -1,34 +1,54 @@
 ﻿var playButton = document.querySelector('#play');
+var volumeSlider = document.querySelector('#volumeSlider');
 var songIsPlaying = false;
 var player = null;
+var volume = 10;
+var currentTime = 0;
+
+var playerParams = {
+    currentTime: 0,
+    volume: 10,
+    songIsPlaying: false,
+    durration: 0,
+    songName: ""
+}
 
 playButton.addEventListener('click', play);
+volumeSlider.addEventListener('change', setVolume);
 
 async function play(event) {
     try {
-
-        if(songIsPlaying && player != null)
-        {
-            player.pause();
-            songIsPlaying = false;
-            event.target.src = "/Icons/play.svg";
-            return;
-        }
-
-        /*
-        if(player != null)
-        {
-            player.play();
-            songIsPlaying = true;
-            return;
-        }*/
-
-        const data = new FormData();
         const currentElem = document.querySelector('.active');
-
+       
         if (isEmptyObject(currentElem)) return;
 
         const name = currentElem.textContent;
+
+        if(playerParams.songIsPlaying && 
+            player != null &&
+            playerParams.songName == name)
+        {
+            player.pause();
+            event.target.src = "/Icons/play.svg";
+            playerParams.songIsPlaying = false;
+            return;
+        }
+
+        const data = new FormData();
+
+        if(player != null && 
+            !isEmptyString(playerParams.songName) &&
+            playerParams.songName == name &&
+            !playerParams.songIsPlaying)
+        {
+
+            player.play();
+            event.target.src = "/Icons/pause.svg";
+            playerParams.songIsPlaying = true;
+            return;
+        }
+
+        playerParams.songName = name;
 
         data.append("name", name);
 
@@ -39,10 +59,16 @@ async function play(event) {
 
         if (response.ok) {
             let song = await response.arrayBuffer();
+            if(player != null)
+                player.destroy();
             player = AV.Player.fromBuffer(song);
+            
+            //player.watch("seekTime", changeSongTime);
             player.play();
-            songIsPlaying = true;
             event.target.src = "/Icons/pause.svg";
+            player.volume = playerParams.volume;
+            playerParams.songIsPlaying = true;
+            playerParams.durration = player.durration;
         } else {
             alert("HTTP Error: " + response.status);
         }
@@ -50,6 +76,32 @@ async function play(event) {
 
     catch (error) {
         console.error("Error: ", error)
+    }
+}
+
+function isEmptyString(str) {
+    return (!str || 0 === str.length);
+}
+
+function updateUiTime(durration)
+{
+    let 
+}
+
+function seekSong() {
+        
+}
+
+function changeSongTime(id, oldval, newval)
+{
+    console.log(newval);
+}
+
+function setVolume(event){
+    if(player != null)
+    {
+        playerParams.volume = event.target.value;
+        player.volume = playerParams.volume;
     }
 }
 

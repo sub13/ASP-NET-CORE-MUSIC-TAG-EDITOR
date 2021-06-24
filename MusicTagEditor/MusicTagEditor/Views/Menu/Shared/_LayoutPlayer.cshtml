@@ -1,15 +1,16 @@
 ﻿<!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/MainStyle.css" />
+    <link rel="stylesheet" href="~/css/player.css" />
     <script src="~/js/player/auroraplayer.js" type="text/javascript"></script>
     <script src="~/js/player/aurora.js" type="text/javascript"></script>
     <script src="~/js/player/flac.js" type="text/javascript"></script>
     <script src="~/js/player/mp3.js" type="text/javascript"></script>
+    <script src="~/js/polyfills/watchPolyFill.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="container-fluid">
@@ -34,12 +35,22 @@
                     </div>
                     <div class="mx-auto order-0">
                         <div class="btn-group" role="group">
-                            <button id="play" type="button" class="btn btn-outline-success">
-                                <img src="~/Icons/play.svg" alt="" width="32" height="32" title="Bootstrap">
-                            </button>
-                            <button name="UniversalBtn" type="button" class="btn btn-outline-success" onclick="SendPathToServer()">
-                                <img src="~/Icons/pencil.svg" alt="" width="32" height="32" title="Bootstrap">
-                            </button>
+                            <div class="p-3">
+                                
+                            </div>
+                            <div class="container">
+                                <button id="play" type="button" class="btn btn-outline-success playerBtns">
+                                    <img src="~/Icons/play.svg" alt="" title="Bootstrap">
+                                </button>
+                                <button name="UniversalBtn" type="button" class="btn btn-outline-success playerBtns" onclick="SendPathToServer()">
+                                    <img src="~/Icons/pencil.svg" alt="" title="Bootstrap">
+                                </button>
+                            </div>
+                            <div class="p-3">
+                                <input id="volumeSlider" value="10" type="range" style="min-width: 200px;" class="custom-range" min="0" max="100">
+                                <label class="form-label" for="timeSong">0:00</label>
+                                <input type="range" value="0" style="min-width: 200px;" class="custom-range" id="timeSong" />
+                            </div>
                         </div>
                     </div>
 

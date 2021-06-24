@@ -47,7 +47,6 @@ namespace MusicTagEditor.Controllers
 
             var pathToFiles = await _musicFileService.UploadMusicFiles(uploads);
 
-
             if (pathToFiles != null)
             {
                 return RedirectToAction("Choosing", "Menu");
@@ -56,7 +55,6 @@ namespace MusicTagEditor.Controllers
             return View("General");       
         }
 
-        
         public async Task<IActionResult> Choosing()
         {
             List<MusicFileModel> musicFilesModel = await _musicFileService.GetMusicModels();     
