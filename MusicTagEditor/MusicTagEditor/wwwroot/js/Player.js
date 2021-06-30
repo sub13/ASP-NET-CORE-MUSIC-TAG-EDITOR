@@ -1,5 +1,7 @@
 ﻿var playButton = document.querySelector('#play');
 var volumeSlider = document.querySelector('#volumeSlider');
+var timeSongSlider = document.querySelector('#timeSong');
+var labelForTimeSong = document.querySelector("#labelTimeSong");
 var songIsPlaying = false;
 var player = null;
 var volume = 10;
@@ -9,25 +11,39 @@ var playerParams = {
     currentTime: 0,
     volume: 10,
     songIsPlaying: false,
-    durration: 0,
+    songLength: 0,
     songName: ""
 }
 
 playButton.addEventListener('click', play);
 volumeSlider.addEventListener('change', setVolume);
+timeSongSlider.addEventListener('change', setTimeForSong);
 
 async function play(event) {
     try {
-        const currentElem = document.querySelector('.active');
-       
-        if (isEmptyObject(currentElem)) return;
 
-        const name = currentElem.textContent;
+        let currentElem = document.querySelector('.active');
+        let name = ""
+        
+        if (isEmptyObject(currentElem)) 
+        {
+           currentElem =  document.querySelector('[name = "nameFileSong"]');
+           console.log(currentElem);
+           if(isEmptyObject(currentElem))
+                return;
+            console.log(currentElem);
+            name = currentElem.value;    
+        }
+        else
+        {
+            name = currentElem.textContent;
+        }
 
         if(playerParams.songIsPlaying && 
             player != null &&
             playerParams.songName == name)
         {
+            console.log("dsgsdkfgjsdlgsdl");
             player.pause();
             event.target.src = "/Icons/play.svg";
             playerParams.songIsPlaying = false;
@@ -61,14 +77,15 @@ async function play(event) {
             let song = await response.arrayBuffer();
             if(player != null)
                 player.destroy();
-            player = AV.Player.fromBuffer(song);
-            
+            player = await AV.Player.fromBuffer(song);
             //player.watch("seekTime", changeSongTime);
             player.play();
             event.target.src = "/Icons/pause.svg";
             player.volume = playerParams.volume;
             playerParams.songIsPlaying = true;
-            playerParams.durration = player.durration;
+            timeSongSlider.setAttribute("max", player.duration);
+            player.watch("currentTime", updateUiTime);
+            player.watch("duration", getCurrentSongLenght);
         } else {
             alert("HTTP Error: " + response.status);
         }
@@ -83,18 +100,41 @@ function isEmptyString(str) {
     return (!str || 0 === str.length);
 }
 
-function updateUiTime(durration)
+function getCurrentSongLenght(id, oldVal, newVal)
 {
-    let 
+    playerParams.songLength = newVal;
+    timeSongSlider.setAttribute("max", playerParams.songLength);
 }
 
-function seekSong() {
-        
+function updateUiTime(id, oldVal, newVal)
+{
+    if(newVal != null && !isNaN(newVal))
+    { 
+        playerParams.currentTime = newVal;
+        timeSongSlider.value = newVal;
+        let commonTime = (playerParams.currentTime / 1000);
+        let seconds = Math.floor(commonTime % 60);
+        let minutes = Math.floor((commonTime /= 60) % 60);
+        let time = "";
+        if(seconds < 10)
+            time = `${minutes}:${0 + seconds.toString()}`;
+        else 
+            time = `${minutes}:${seconds}`;
+        //let valueTime = (newVal / 60000).toFixed(2);
+        //let time = `${valueTime.trunc}:${String(valueTime).split('.')[1]}`
+        labelForTimeSong.textContent = time;
+    }
 }
 
-function changeSongTime(id, oldval, newval)
+function setTimeForSong(event)
 {
-    console.log(newval);
+    if(player != null)
+    {
+        playerParams.currentTime = parseInt(event.target.value);
+        player.unwatch("currentTime", updateUiTime);
+        player.seek(playerParams.currentTime);
+        player.watch("currentTime", updateUiTime);
+    }
 }
 
 function setVolume(event){
@@ -107,14 +147,18 @@ function setVolume(event){
 
 function isEmptyObject(obj) {
     if (obj == null) {
+        console.log("gdf");
         return true
     }
     else {
+        /*
         for (var i in obj) {
             if (obj.hasOwnProperty(i)) {
                 return false;
             }
         }
         return true;
+        */
+       return false;
     }
 }
