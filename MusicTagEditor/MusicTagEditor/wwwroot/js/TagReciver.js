@@ -1,28 +1,30 @@
 
  var fileContainerCopy = document.querySelector('[name = "FileContainer"]').cloneNode(true);
  var ChooseSongRow;
- var hubConnection = new signalR.HubConnectionBuilder()
+ 
+/*
+var connectionId = "";
+var hubConnection = new signalR.HubConnectionBuilder()
  .withUrl("/GetTag")
+ .withAutomaticReconnect([0, 1000, 100000, null])
  .build();
 
-var connectionId = "";
+
+hubConnection.on("GetTagForm", (data) => DisplayTagData(data));
 
 hubConnection.start().then(() => {
     // после соединения получаем id подключения
     connectionId = hubConnection.connectionId;
 });
-
-
-hubConnection.on("GetTagForm", (data) => DisplayTagData(data));
-
+*/
 
 var DisplayTagData = (data) =>
 {
     ChooseSongRow =  document.querySelector('[name = "ChooseSong"]');
     //fileContainer.parentNode.removeChild(fileContainer);
-    console.log(data);
     let selectedSong = document.querySelector('.active');
     let nameSong = selectedSong.textContent;
+    
     ChooseSongRow.innerHTML =`
     <form class="mt-3" asp-anti-forgery="true" name="EditMusicForm" method="post" action="/Menu/SaveTag" enctype="multipart/form-data">       
         <div>
@@ -147,53 +149,50 @@ function addMultipleDataToInput(data, selector)
     let i = 0;
     for (let elem in data)
     {
-        console.log(selectElem.value);
         if (i == 0)
             str = data[elem].name;
         else
             str += `,${data[elem].name}`;
         i++;
     }
-    console.log(str);
     selectElem.value = str;
 }
 
-/*
-function addOptionToSelect(data, selector)
+async function SendPathToServer()
 {
-    const select =  document.querySelector(selector);
-
-    for (let elem in data)
+    try
     {
-        let option = document.createElement('option');
-        option.value = data[elem].name;
-        option.text = data[elem].name;
-        select.appendChild(option);
+        const data = new FormData();
+        const currentElem = document.querySelector('.active');
+        
+        if(isEmptyObject(currentElem)) return;
+        /*
+        const selector = `p[name='path'][id='${idCurrent}']`;
+        const pWithPath =  document.querySelector(selector);
+        const path = pWithPath.textContent;
+        */
+        const name = currentElem.textContent;
+
+        data.append("name", name);
+        var response = await fetch("GetTagFromMusic", {
+            method: "POST",
+            body: data
+        })
+
+        if(response.ok)
+        {
+            let dataJson = await response.json();
+            DisplayTagData(dataJson);
+        }
+        else
+        {
+            console.error("HTTP Error: " + response.status);
+        }
     }
-}
-*/
-
-function SendPathToServer()
-{
-    const data = new FormData();
-    const currentElem = document.querySelector('.active');
-    
-    if(isEmptyObject(currentElem)) return;
-    /*
-    const selector = `p[name='path'][id='${idCurrent}']`;
-    const pWithPath =  document.querySelector(selector);
-    const path = pWithPath.textContent;
-    */
-    const name = currentElem.textContent;
-
-    data.append("name",name);
-    data.append("connectionId",connectionId);
-    var response = fetch("GetTagFromMusic", {
-        method: "POST",
-        body: data
-    })
-    .catch(error => console.error("Error: ", error));
-    //hubConnection.invoke("GetTagFromMusic", path);
+    catch (error)
+    {
+        console.error("Error: ", error);
+    }
 }
 
 function isEmptyObject(obj) {
@@ -221,5 +220,3 @@ function BackToList()
     UniversalBtn.firstElementChild.src = "/Icons/pencil.svg";
     UniversalBtn.onclick = SendPathToServer;
 }
-
-

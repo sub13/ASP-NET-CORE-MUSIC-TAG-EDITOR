@@ -21,17 +21,14 @@ timeSongSlider.addEventListener('change', setTimeForSong);
 
 async function play(event) {
     try {
-
         let currentElem = document.querySelector('.active');
         let name = ""
         
         if (isEmptyObject(currentElem)) 
         {
            currentElem =  document.querySelector('[name = "nameFileSong"]');
-           console.log(currentElem);
            if(isEmptyObject(currentElem))
                 return;
-            console.log(currentElem);
             name = currentElem.value;    
         }
         else
@@ -39,13 +36,14 @@ async function play(event) {
             name = currentElem.textContent;
         }
 
+        let playButtonImage = document.querySelector("#playButtonImage");
+
         if(playerParams.songIsPlaying && 
             player != null &&
             playerParams.songName == name)
         {
-            console.log("dsgsdkfgjsdlgsdl");
             player.pause();
-            event.target.src = "/Icons/play.svg";
+            playButtonImage.src = "/Icons/play.svg";
             playerParams.songIsPlaying = false;
             return;
         }
@@ -59,7 +57,7 @@ async function play(event) {
         {
 
             player.play();
-            event.target.src = "/Icons/pause.svg";
+            playButtonImage.src = "/Icons/pause.svg";
             playerParams.songIsPlaying = true;
             return;
         }
@@ -80,14 +78,14 @@ async function play(event) {
             player = await AV.Player.fromBuffer(song);
             //player.watch("seekTime", changeSongTime);
             player.play();
-            event.target.src = "/Icons/pause.svg";
+            playButtonImage.src = "/Icons/pause.svg";
             player.volume = playerParams.volume;
             playerParams.songIsPlaying = true;
             timeSongSlider.setAttribute("max", player.duration);
             player.watch("currentTime", updateUiTime);
             player.watch("duration", getCurrentSongLenght);
         } else {
-            alert("HTTP Error: " + response.status);
+            console.error("HTTP Error: " + response.status);
         }
     }
 
@@ -147,7 +145,6 @@ function setVolume(event){
 
 function isEmptyObject(obj) {
     if (obj == null) {
-        console.log("gdf");
         return true
     }
     else {

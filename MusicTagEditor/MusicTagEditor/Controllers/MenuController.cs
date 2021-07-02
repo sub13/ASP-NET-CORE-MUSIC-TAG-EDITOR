@@ -62,10 +62,10 @@ namespace MusicTagEditor.Controllers
         }
 
         [HttpPost]
-        public async Task GetTagFromMusic(string name, string connectionId)
+        public async Task<IActionResult> GetTagFromMusic(string name)
         {
             var songData = await _musicFileService.GetMusicFileData(name);
-            await _hubContext.Clients.Client(connectionId).SendAsync("GetTagForm", songData);
+            return Ok(songData);
         }
 
         [HttpPost]
