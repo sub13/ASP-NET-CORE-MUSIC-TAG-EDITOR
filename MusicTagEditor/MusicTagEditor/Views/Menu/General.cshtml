@@ -1,14 +1,17 @@
-﻿<div class="container col-sm-5 col-md-6 col-lg-6 col-xl-5">
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+<div class="container col-sm-5 col-md-6 col-lg-6 col-xl-5">
     <div class="row">
         <div class="col-12">
             <div class="card align-self-center mt-5">
                 <img class="card-img-top logo_size" src="~/Images/Logo/music.png">
                 <div class="card-body">
-                    <h5 class="card-title">Меню песни</h5>
-                    <p class="card-text">Выберите песню из своего локального хранилища</p>
+                    <h5 class="card-title">@Localizer["SongMenu"]</h5>
+                    <p class="card-text">@Localizer["ChooseSong"]</p>
                     <form asp-action="UploadMusicFiles" asp-controller="Menu" method="post" enctype="multipart/form-data">
                         <input type="file" class="form-control-file" data-show-upload="false" data-show-caption="true" multiple name="uploads">
-                        <input type="submit" class="mt-2 btn btn-primary" value="Загрузить">
+                        <input type="submit" class="mt-2 btn btn-primary" value=@Localizer["Upload"]>
                     </form>
                     @*<a href="#" class="btn btn-primary">Загрузить</a>*@
                 </div>

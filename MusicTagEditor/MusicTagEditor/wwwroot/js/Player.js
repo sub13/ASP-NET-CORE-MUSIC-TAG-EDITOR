@@ -4,15 +4,28 @@ var timeSongSlider = document.querySelector('#timeSong');
 var labelForTimeSong = document.querySelector("#labelTimeSong");
 var songIsPlaying = false;
 var player = null;
-var volume = 10;
+var volume = getVolumeFromLocalStorage();
 var currentTime = 0;
+volumeSlider.value = volume;
 
 var playerParams = {
     currentTime: 0,
-    volume: 10,
+    volume: volume,
     songIsPlaying: false,
     songLength: 0,
     songName: ""
+}
+
+
+function getVolumeFromLocalStorage()
+{
+    let volume = localStorage.getItem('volume');
+    if(volume == null)
+    {
+        localStorage.setItem('volume', 10);
+        return 10;
+    }
+    return volume;
 }
 
 playButton.addEventListener('click', play);
@@ -138,7 +151,13 @@ function setTimeForSong(event)
 function setVolume(event){
     if(player != null)
     {
+        let img = document.querySelector("#imageForVolume");
+
+        if(event.target.value != 0) img.src = "/Icons/speaker-fill.svg";
+        else img.src = "/Icons/speaker.svg";
+        
         playerParams.volume = event.target.value;
+        localStorage.setItem('volume', playerParams.volume);
         player.volume = playerParams.volume;
     }
 }
@@ -157,5 +176,25 @@ function isEmptyObject(obj) {
         return true;
         */
        return false;
+    }
+}
+
+function switchVolume(event)
+{
+    if(player != null)
+    {
+        let img = document.querySelector("#imageForVolume");
+        if(player.volume != 0)
+        {
+            player.volume = 0;
+            localStorage.setItem('volume', 0);
+            img.src = "/Icons/speaker.svg";
+        }
+        else
+        {
+            player.volume = playerParams.volume;
+            localStorage.setItem('volume', playerParams.volume);
+            img.src = "/Icons/speaker-fill.svg";
+        }
     }
 }

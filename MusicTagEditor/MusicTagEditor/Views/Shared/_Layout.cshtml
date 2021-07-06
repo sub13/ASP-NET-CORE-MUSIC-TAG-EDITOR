@@ -1,5 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
+<!DOCTYPE html>
 <html>
     <head>
         <meta name="viewport" content="width=device-width" />
@@ -12,9 +14,6 @@
             <div class="row">
                 <div class="col-12 border">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>*@
                         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                             <a class="navbar-brand" href="#">
                                 <img src="~/Images/Logo/compact-disc.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -23,7 +22,7 @@
                             <ul class="navbar-nav mr-auto">
                                 <li>
                                     <form method="get">
-                                        <button class="btn btn-outline-primary my-2 my-sm-0" asp-action="Choosing" asp-controller="Menu" type="submit">Редактор</button>
+                                        <button class="btn btn-outline-primary my-2 my-sm-0" asp-action="Choosing" asp-controller="Menu" type="submit">@Localizer["Editor"]</button>
                                     </form>
                                 </li>
                             </ul>
@@ -36,11 +35,11 @@
                                     <a type="button" class="btn-floating deep-purple my-2 my-sm-0" asp-action="Logout" asp-controller="Auth"><i class="glyphicon-class" aria-hidden="true"></i></a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="#">Справка</a>
+                                    <a class="nav-link" href="#">@Localizer["Help"]</a>
                                 </li>
                                 <li>
                                     <form class="form-inline my-2 my-lg-0">
-                                        <button class="btn btn-outline-danger my-2 my-sm-0" asp-action="Logout" asp-controller="Auth" type="submit">Выход</button>
+                                        <button class="btn btn-outline-danger my-2 my-sm-0" asp-action="Logout" asp-controller="Auth" type="submit">@Localizer["Logout"]</button>
                                     </form>
                                 </li>
                             </ul>

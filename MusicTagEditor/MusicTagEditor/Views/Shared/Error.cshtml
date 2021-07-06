@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model MusicTagEditor.ViewModels.ErrorViewModels
+@inject IViewLocalizer Localizer
+
+<div class="container-fluid">
+    <div class="alert alert-danger">
+        <h1>
+            @Localizer["SmWentWrong"]
+        </h1>
+    </div>
+    <div class="alert alert-danger">
+        <h3>
+            @Localizer["ExMessage"]
+        </h3>
+        <p>@Model.ErrorMessage</p>
+    </div>
+    <div class="alert alert-danger">
+        <h3>
+            @Localizer["ExPath"]
+        </h3>
+        <p>@Model.ExceptionPath</p>
+    </div>
+    <div class="alert alert-danger">
+        <h3>
+            @Localizer["ExStackTrace"]
+        </h3>
+        <p>@Model.StackTrace</p>
+    </div>
+</div>
