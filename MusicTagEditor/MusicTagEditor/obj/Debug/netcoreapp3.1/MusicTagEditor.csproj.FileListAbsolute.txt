@@ -668,3 +668,6 @@ C:\Users\Siarhei.Shapiatukha\Desktop\Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\Mu
 C:\Users\Siarhei.Shapiatukha\Desktop\Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\MusicTagEditor.Resources.Views.Shared.Error.en.resources
 C:\Users\Siarhei.Shapiatukha\Desktop\Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\MusicTagEditor.Resources.Views.Shared.Error.ru.resources
 C:\Users\Siarhei.Shapiatukha\Desktop\Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\Siarhei.Shapiatukha\Desktop\Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\MusicTagEditor.Resources.Views.Menu.Shared._Help.en.resources
+C:\Users\Siarhei.Shapiatukha\Desktop\Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\MusicTagEditor.Resources.Views.Menu.Shared._Help.ru.resources
+C:\Users\Siarhei.Shapiatukha\Desktop\Tag Editor\ASP-NET-CORE-MUSIC-TAG-EDITOR\MusicTagEditor\MusicTagEditor\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Shared\_Help.cshtml.g.cs

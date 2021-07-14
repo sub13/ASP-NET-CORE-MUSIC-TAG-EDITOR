@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+<div class="modal fade" id="modalHelp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@Localizer["help"]</h5>
+            </div>
+            <div class="modal-body">
+                <p>@Localizer["developer"]: sub13 (isergei151@gmail.com)</p>
+                <a href="https://github.com/sub13/ASP-NET-CORE-MUSIC-TAG-EDITOR">Github</a>
+                <div class="d-flex justify-content-center">
+                    <img src="~/Images/Qr/pageGithubQR.png" class="img-thumbnail">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

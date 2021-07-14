@@ -13,9 +13,23 @@ var playerParams = {
     volume: volume,
     songIsPlaying: false,
     songLength: 0,
-    songName: ""
+    songName: "",
+    setOfSongName: getSetOfSong(),
+    songNumber: 0,
 }
 
+
+function getSetOfSong()
+{
+    let songSet = new Set();
+    let tableSongItems = document.querySelectorAll(".list-group-item");
+    for(let tableSongItem of tableSongItems.values())
+    {
+        let songName = tableSongItem.textContent;
+        songSet.add(songName);
+    }
+    return songSet;
+}
 
 function getVolumeFromLocalStorage()
 {
@@ -32,7 +46,7 @@ playButton.addEventListener('click', play);
 volumeSlider.addEventListener('change', setVolume);
 timeSongSlider.addEventListener('change', setTimeForSong);
 
-async function play(event) {
+async function play() {
     try {
         let currentElem = document.querySelector('.active');
         let name = ""
@@ -91,6 +105,7 @@ async function play(event) {
             player = await AV.Player.fromBuffer(song);
             //player.watch("seekTime", changeSongTime);
             player.play();
+            playerParams.songNumber = currentElem.id;
             playButtonImage.src = "/Icons/pause.svg";
             player.volume = playerParams.volume;
             playerParams.songIsPlaying = true;
@@ -120,8 +135,26 @@ function getCurrentSongLenght(id, oldVal, newVal)
 function updateUiTime(id, oldVal, newVal)
 {
     if(newVal != null && !isNaN(newVal))
-    { 
+    {
         playerParams.currentTime = newVal;
+        if(Math.abs((playerParams.currentTime - playerParams.songLength)) < 500)
+        {
+            player.pause();
+            if(playerParams.songNumber != playerParams.setOfSongName.size - 1)
+            {
+                let currentSong = document.querySelector(`[id = "${playerParams.songNumber}"]`);
+                currentSong.setAttribute("class", "list-group-item list-group-item-action");
+                playerParams.songNumber++;
+                let nextSong = document.querySelector(`[id = "${playerParams.songNumber}"]`);
+                nextSong.setAttribute("class", "list-group-item list-group-item-action active");
+                play();
+                return;
+            }
+            let playButtonImage = document.querySelector("#playButtonImage");
+            playButtonImage.src = "/Icons/play.svg";
+            playerParams.songIsPlaying = false; 
+        }
+
         timeSongSlider.value = newVal;
         let commonTime = (playerParams.currentTime / 1000);
         let seconds = Math.floor(commonTime % 60);
